@@ -1,10 +1,11 @@
 ---
-title: Particle Filter on Pose Tracking
+title: 粒子滤波器 - 姿态跟踪（Particle Filter -­ Pose Tracking）
 date: 2019-04-11 12:00:27
 tags:
 ---
 
-# 粒子滤波器 - 姿态跟踪（Particle Filter -­ Pose Tracking）
+![](https://paper-attachments.dropbox.com/s_B11EF229FFC176E08FB7E677870E42312ADC86B9923359B137487FF1777CDD72_1554936111933_image.png)
+
 ## 概述
 
 这次作业是要求用粒子滤波器（Particle Filter）的方法在2维平面跟踪姿态。
@@ -12,8 +13,6 @@ tags:
 想象一个机器人想要知道它自己的位置，并以此决定之后往哪里探索。下面这张图描绘了一个机器人定位的例子，用激光雷达测量投射到一张地图上。
 
 <!--more-->
-
-![](https://paper-attachments.dropbox.com/s_B11EF229FFC176E08FB7E677870E42312ADC86B9923359B137487FF1777CDD72_1554936111933_image.png)
 
 ## 指导
 

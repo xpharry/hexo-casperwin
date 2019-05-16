@@ -80,5 +80,5 @@ theme: next
 deploy:
   type: git
   repo: git@github.com:xpharry/xpharry.github.io.git
-  branch: published
+  branch: master
   message: "keep silent"
