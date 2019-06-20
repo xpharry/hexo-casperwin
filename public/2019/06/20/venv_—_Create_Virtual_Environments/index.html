@@ -96,17 +96,19 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="RoverPi小车 第三篇：系统安装和网络设置">
-<meta property="og:url" content="http://casperwin.me/2019/05/16/RoverPi小车_第三篇_系统安装和网络设置/index.html">
+  <meta name="description" content="venv — Create Virtual Environments">
+<meta property="og:type" content="article">
+<meta property="og:title" content="venv — Create Virtual Environments">
+<meta property="og:url" content="http://casperwin.me/2019/06/20/venv_—_Create_Virtual_Environments/index.html">
 <meta property="og:site_name" content="Casper的技术博客">
+<meta property="og:description" content="venv — Create Virtual Environments">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cdn.instructables.com/FPN/U31F/HBNXVG6G/FPNU31FHBNXVG6G.LARGE.jpg">
-<meta property="og:image" content="http://emanual.robotis.com/assets/images/platform/turtlebot3/software/network_configuration.png">
-<meta property="og:updated_time" content="2019-06-20T17:55:13.864Z">
+<meta property="og:image" content="https://cdn.activestate.com/wp-content/uploads/2018/10/pipenv-better-than-venv-blog-hero-1200x630.jpg">
+<meta property="og:updated_time" content="2019-06-20T17:54:48.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RoverPi小车 第三篇：系统安装和网络设置">
-<meta name="twitter:image" content="https://cdn.instructables.com/FPN/U31F/HBNXVG6G/FPNU31FHBNXVG6G.LARGE.jpg">
+<meta name="twitter:title" content="venv — Create Virtual Environments">
+<meta name="twitter:description" content="venv — Create Virtual Environments">
+<meta name="twitter:image" content="https://cdn.activestate.com/wp-content/uploads/2018/10/pipenv-better-than-venv-blog-hero-1200x630.jpg">
 
 
 
@@ -114,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://casperwin.me/2019/05/16/RoverPi小车_第三篇_系统安装和网络设置/">
+  <link rel="canonical" href="http://casperwin.me/2019/06/20/venv_—_Create_Virtual_Environments/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>RoverPi小车 第三篇：系统安装和网络设置 | Casper的技术博客</title>
+  <title>venv — Create Virtual Environments | Casper的技术博客</title>
   
 
 
@@ -368,7 +370,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/05/16/RoverPi小车_第三篇_系统安装和网络设置/">
+    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/06/20/venv_—_Create_Virtual_Environments/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Casper">
@@ -385,7 +387,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RoverPi小车 第三篇：系统安装和网络设置
+          <h1 class="post-title" itemprop="name headline">venv — Create Virtual Environments
 
               
             
@@ -411,24 +413,12 @@
                 
               
 
-              <time title="创建时间：2019-05-16 14:30:27" itemprop="dateCreated datePublished" datetime="2019-05-16T14:30:27-07:00">2019-05-16</time>
+              <time title="创建时间：2019-06-20 12:00:27 / 修改时间：10:54:48" itemprop="dateCreated datePublished" datetime="2019-06-20T12:00:27-07:00">2019-06-20</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-20 10:55:13" itemprop="dateModified" datetime="2019-06-20T10:55:13-07:00">2019-06-20</time>
               
             
           </span>
@@ -462,53 +452,20 @@
       
 
       
-        <p><img src="https://cdn.instructables.com/FPN/U31F/HBNXVG6G/FPNU31FHBNXVG6G.LARGE.jpg" alt="venv" style="height:300px;" align="middle"></p>
-<a id="more"></a>
-<h2 id="在Raspberry-Pi上安装ROS"><a href="#在Raspberry-Pi上安装ROS" class="headerlink" title="在Raspberry Pi上安装ROS"></a>在Raspberry Pi上安装ROS</h2><p>参考了下面这篇博文．</p>
-<p><a href="https://neverbenever.wordpress.com/2017/12/20/install-ros-and-opencv-in-raspberry-piraspbian-stretch/" target="_blank" rel="noopener">INSTALL ROS AND OPENCV IN RASPBERRY PI(RASPBIAN STRETCH)</a></p>
-<p>系统安装这方面不需要耗费太多精力，尤其有了一次经验以后，重复这样无聊和漫长的过程是实在是浪费生命．可以直接利用网上现成的安装好ROS的镜像，一次烧录到位．</p>
-<p>这个链接有长期更新的镜像，值得拥有．</p>
-<p><a href="https://downloads.ubiquityrobotics.com/pi.html" target="_blank" rel="noopener">https://downloads.ubiquityrobotics.com/pi.html</a></p>
-<h2 id="网络设置"><a href="#网络设置" class="headerlink" title="网络设置"></a>网络设置</h2><p><strong>设置首次启动自动连接WIFI</strong></p>
-<p>我们可以创建一个特别的文件，用来在首次启动时连接wifi．更详细的介绍可以看<a href="https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi" target="_blank" rel="noopener">这个链接</a>，这里我们可以看一下步骤．</p>
-<ul>
-<li>打开文本编辑器：在Linux上是 <code>gedit</code>．在Linux上是Notepad． 在Mac上是TextEdit．</li>
-<li>粘贴并编辑下面的内容，以匹配你的WIFI:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">country=US</span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line"></span><br><span class="line">network=&#123;</span><br><span class="line">    ssid=&quot;&lt;your network name&gt;&quot;</span><br><span class="line">    psk=&quot;&lt;your password&gt;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>替换 <code>&lt;your network name&gt;</code> 为你的WIFI名称，并保留引号． 替换 <code>&lt;your password&gt;</code> 为你的WIFI登录密码，包含在引号里．如果你希望在这里的密码是被加密的状态，可以在你启动树莓派并登录以后<a href="https://unix.stackexchange.com/questions/278946/hiding-passwords-in-wpa-supplicant-conf-with-wpa-eap-and-mschap-v2" target="_blank" rel="noopener">修改这个文件</a>．</p>
-<ul>
-<li>保存这个文件到boot分区的根目录下，文件名为<code>wpa_supplicant.conf</code>．第一次启动之后，这个文件会被转移到<code>/etc/wpa_supplicant/wpa_supplicant.conf</code>，之后可以在这里继续编辑．</li>
-</ul>
-<p>激活<a href="https://www.raspberrypi.org/documentation/remote-access/ssh/" target="_blank" rel="noopener"><strong>SSH</strong></a></p>
-<p>从2016年11月的版本开始，Raspbian默认把SSH关闭．可以通过如下步骤手动激活SSH：</p>
-<ol>
-<li>从<code>Preferences</code>菜单启动 <code>Raspberry Pi Configuration</code></li>
-<li>导航到 <code>Interfaces</code> 条目</li>
-<li>选择 <code>SSH</code>旁边的<code>Enabled</code></li>
-<li>点击 <code>OK</code></li>
-</ol>
-<h2 id="ROS-Master-设置"><a href="#ROS-Master-设置" class="headerlink" title="ROS Master 设置"></a>ROS Master 设置</h2><p><strong>设置 ROS IP: 机器人小车端</strong></p>
-<p>把下列变量输出到你的机器人小车的工作空间脚本文件．</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo export ROS_MASTER_URI=http://localhost:11311 &gt;&gt; ~/.bashrc</span><br><span class="line">&gt; echo export ROS_HOSTNAME=IP_OF_RoverPi &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p><strong>设置ROS IP：远程上位机</strong></p>
-<p>把下列变量输出到你的上位机的工作空间脚本文件．注意master是机器人小车RoverPi.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; echo export ROS_MASTER_URI=http://IP_OF_RoverPi:11311 &gt;&gt; ~/.bashrc</span><br><span class="line">&gt; echo export ROS_HOSTNAME=IP_OF_PC &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>这个过程可以参考如下图所示的TurtleBot设置过程，只需要把TurtleBot换成RoverPi Car即可。</p>
-<p><img src="http://emanual.robotis.com/assets/images/platform/turtlebot3/software/network_configuration.png" alt></p>
-<p>可以做一个简单的测试，看网络是否设置成功．</p>
-<p>在机器人小车的一端先开启roscore再开启一个新窗口运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rostopic pub -r10 /hello std_msgs/String &quot;hello&quot;</span><br></pre></td></tr></table></figure>
-<p>在上位机运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rostopic echo /hello</span><br></pre></td></tr></table></figure>
-<p>这个信息＂hello＂将会在１秒内被打印10次．如果没有，检查你的ROS_HOSTNAME设置．</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://neverbenever.wordpress.com/2017/12/20/install-ros-and-opencv-in-raspberry-piraspbian-stretch/" target="_blank" rel="noopener">https://neverbenever.wordpress.com/2017/12/20/install-ros-and-opencv-in-raspberry-piraspbian-stretch/</a></li>
-<li><a href="https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi" target="_blank" rel="noopener">https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi</a></li>
-<li><a href="https://downloads.ubiquityrobotics.com/pi.html" target="_blank" rel="noopener">https://downloads.ubiquityrobotics.com/pi.html</a></li>
-<li><a href="http://wiki.ros.org/Robots/TurtleBot/Network%20Setup" target="_blank" rel="noopener">http://wiki.ros.org/Robots/TurtleBot/Network%20Setup</a></li>
-</ul>
-
+        <p><img src="https://cdn.activestate.com/wp-content/uploads/2018/10/pipenv-better-than-venv-blog-hero-1200x630.jpg" alt="venv" style="height:300px;" align="middle"></p>
+<h1 id="venv-—-Create-Virtual-Environments"><a href="#venv-—-Create-Virtual-Environments" class="headerlink" title="venv — Create Virtual Environments"></a>venv — Create Virtual Environments</h1><a id="more"></a>
+<p>To set things up in a virtual environment for isolation is a good way. If you don’t already have it install python3’s venv module.</p>
+<pre><code>sudo apt-get install python3-venv
+</code></pre><p>Create a venv</p>
+<pre><code>mkdir -p ~/my_venv
+python3 -m venv ~/my_venv
+</code></pre><p>Install rocker</p>
+<pre><code>cd ~/my_venv
+. ~/my_venv/bin/activate
+pip install git+https://github.com/osrf/rocker.git #(just an example)
+</code></pre><p>For any new terminal re activate the venv before trying to use it.</p>
+<pre><code>. ~/my_venv/bin/activate
+</code></pre>
       
     </div>
 
@@ -538,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/14/RoverPi小车_第二篇_硬件选型/" rel="next" title="RoverPi小车 第二篇：硬件选型和组装">
-                <i class="fa fa-chevron-left"></i> RoverPi小车 第二篇：硬件选型和组装
+              <a href="/2019/05/16/RoverPi小车_第三篇_系统安装和网络设置/" rel="next" title="RoverPi小车 第三篇：系统安装和网络设置">
+                <i class="fa fa-chevron-left"></i> RoverPi小车 第三篇：系统安装和网络设置
               </a>
             
           </div>
@@ -547,10 +504,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/20/venv_—_Create_Virtual_Environments/" rel="prev" title="venv — Create Virtual Environments">
-                venv — Create Virtual Environments <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -703,7 +656,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在Raspberry-Pi上安装ROS"><span class="nav-number">1.</span> <span class="nav-text">在Raspberry Pi上安装ROS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络设置"><span class="nav-number">2.</span> <span class="nav-text">网络设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROS-Master-设置"><span class="nav-number">3.</span> <span class="nav-text">ROS Master 设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#venv-—-Create-Virtual-Environments"><span class="nav-number">1.</span> <span class="nav-text">venv — Create Virtual Environments</span></a></li></ol></div>
             
 
           </div>

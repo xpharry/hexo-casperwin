@@ -4,7 +4,7 @@ date: 2019-05-14 12:00:27
 tags:
 ---
 
-![](https://www.dropbox.com/s/k6q54nuwmnef8q2/IMG_20190512_204935.jpg?raw=1)
+<img src="https://www.dropbox.com/s/k6q54nuwmnef8q2/IMG_20190512_204935.jpg?raw=1" alt="venv" style="height:300px;" align="middle">
 
 这一篇主要解决几个问题：
 

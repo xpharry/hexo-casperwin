@@ -4,8 +4,7 @@ date: 2019-05-12 12:00:27
 tags:
 ---
 
-![](https://paper-attachments.dropbox.com/s_D06B0A48F9F7B21BB6EB7FC0C5CB18F4351C5400E5B74E225976699118CDB995_1557699404971_roverpi.JPG)
-
+<img src="https://paper-attachments.dropbox.com/s_D06B0A48F9F7B21BB6EB7FC0C5CB18F4351C5400E5B74E225976699118CDB995_1557699404971_roverpi.JPG" alt="venv" style="height:300px;" align="middle">
 
 从本篇文章开始，我将开始一个系列，介绍我如何搭建一个基于树莓派的自动驾驶小车，我把它叫做RoverPi．这第一篇叫做＂前世今生＂，之所以起这么文邹邹的题目，是因为确有其事．
 

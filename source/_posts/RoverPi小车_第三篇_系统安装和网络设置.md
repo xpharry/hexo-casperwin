@@ -4,7 +4,7 @@ date: 2019-05-16 14:30:27
 tags:
 ---
 
-![Image result for raspberrypi ros](https://cdn.instructables.com/FPN/U31F/HBNXVG6G/FPNU31FHBNXVG6G.LARGE.jpg)
+<img src="https://cdn.instructables.com/FPN/U31F/HBNXVG6G/FPNU31FHBNXVG6G.LARGE.jpg" alt="venv" style="height:300px;" align="middle">
 
 <!--more-->
 
