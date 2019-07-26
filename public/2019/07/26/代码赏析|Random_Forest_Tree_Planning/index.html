@@ -96,19 +96,17 @@
 
 
 
-  <meta name="description" content="venv — Create Virtual Environments">
+  <meta name="description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="venv — Create Virtual Environments">
-<meta property="og:url" content="http://casperwin.me/2019/06/20/venv_—_Create_Virtual_Environments/index.html">
+<meta property="og:title" content="代码赏析|Rapidly-exploring Random Trees (RRTs)">
+<meta property="og:url" content="http://casperwin.me/2019/07/26/代码赏析|Random_Forest_Tree_Planning/index.html">
 <meta property="og:site_name" content="Casper的技术博客">
-<meta property="og:description" content="venv — Create Virtual Environments">
+<meta property="og:description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://cdn.activestate.com/wp-content/uploads/2018/10/pipenv-better-than-venv-blog-hero-1200x630.jpg">
-<meta property="og:updated_time" content="2019-06-20T17:54:48.615Z">
+<meta property="og:updated_time" content="2019-07-26T21:32:20.937Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="venv — Create Virtual Environments">
-<meta name="twitter:description" content="venv — Create Virtual Environments">
-<meta name="twitter:image" content="https://cdn.activestate.com/wp-content/uploads/2018/10/pipenv-better-than-venv-blog-hero-1200x630.jpg">
+<meta name="twitter:title" content="代码赏析|Rapidly-exploring Random Trees (RRTs)">
+<meta name="twitter:description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
 
 
 
@@ -116,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://casperwin.me/2019/06/20/venv_—_Create_Virtual_Environments/">
+  <link rel="canonical" href="http://casperwin.me/2019/07/26/代码赏析|Random_Forest_Tree_Planning/">
 
 
 
@@ -126,7 +124,7 @@
   };
 </script>
 
-  <title>venv — Create Virtual Environments | Casper的技术博客</title>
+  <title>代码赏析|Rapidly-exploring Random Trees (RRTs) | Casper的技术博客</title>
   
 
 
@@ -387,7 +385,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/06/20/venv_—_Create_Virtual_Environments/">
+    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/07/26/代码赏析|Random_Forest_Tree_Planning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Casper">
@@ -404,7 +402,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">venv — Create Virtual Environments
+          <h1 class="post-title" itemprop="name headline">代码赏析|Rapidly-exploring Random Trees (RRTs)
 
               
             
@@ -430,7 +428,7 @@
                 
               
 
-              <time title="创建时间：2019-06-20 12:00:27 / 修改时间：10:54:48" itemprop="dateCreated datePublished" datetime="2019-06-20T12:00:27-07:00">2019-06-20</time>
+              <time title="创建时间：2019-07-26 12:00:27 / 修改时间：14:32:20" itemprop="dateCreated datePublished" datetime="2019-07-26T12:00:27-07:00">2019-07-26</time>
             
 
             
@@ -469,20 +467,23 @@
       
 
       
-        <p><img src="https://cdn.activestate.com/wp-content/uploads/2018/10/pipenv-better-than-venv-blog-hero-1200x630.jpg" alt="venv" style="height:300px;" align="middle"></p>
-<h1 id="venv-—-Create-Virtual-Environments"><a href="#venv-—-Create-Virtual-Environments" class="headerlink" title="venv — Create Virtual Environments"></a>venv — Create Virtual Environments</h1><a id="more"></a>
-<p>To set things up in a virtual environment for isolation is a good way. If you don’t already have it install python3’s venv module.</p>
-<pre><code>sudo apt-get install python3-venv
-</code></pre><p>Create a venv</p>
-<pre><code>mkdir -p ~/my_venv
-python3 -m venv ~/my_venv
-</code></pre><p>Install rocker</p>
-<pre><code>cd ~/my_venv
-. ~/my_venv/bin/activate
-pip install git+https://github.com/osrf/rocker.git #(just an example)
-</code></pre><p>For any new terminal re activate the venv before trying to use it.</p>
-<pre><code>. ~/my_venv/bin/activate
-</code></pre>
+        <p>Rapidly-exploring Random Trees (RRTs)</p>
+<p>源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.</p>
+<a id="more"></a>
+<p>From Wikipedia:</p>
+<p>A rapidly exploring random tree (RRT) is an algorithm designed to efficiently search nonconvex, high-dimensional spaces by randomly building a space-filling tree. The tree is constructed incrementally from samples drawn randomly from the search space and is inherently biased to grow towards large unsearched areas of the problem. RRTs were developed by Steven M. LaValle and James J. Kuffner Jr. They easily handle problems with obstacles and differential constraints (nonholonomic and kinodynamic) and have been widely used in autonomous robotic motion planning.</p>
+<p>RRTs can be viewed as a technique to generate open-loop trajectories for nonlinear systems with state constraints. An RRT can also be considered as a Monte-Carlo method to bias search into the largest Voronoi regions of a graph in a configuration space. Some variations can even be considered stochastic fractals.</p>
+<p>Why RRT ?</p>
+<ul>
+<li>High dimensional planning w/ complex dynamic model</li>
+<li>Smooth maneuvering</li>
+</ul>
+<p>For a general configuration space C, the algorithm in pseudocode is as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Algorithm BuildRRT</span><br><span class="line">  Input: Initial configuration qinit, number of vertices in RRT K, incremental distance Δq)</span><br><span class="line">  Output: RRT graph G</span><br><span class="line"></span><br><span class="line">  G.init(qinit)</span><br><span class="line">  for k = 1 to K</span><br><span class="line">    qrand ← RAND_CONF()</span><br><span class="line">    qnear ← NEAREST_VERTEX(qrand, G)</span><br><span class="line">    qnew ← NEW_CONF(qnear, qrand, Δq)</span><br><span class="line">    G.add_vertex(qnew)</span><br><span class="line">    G.add_edge(qnear, qnew)</span><br><span class="line">  return G</span><br></pre></td></tr></table></figure>
+<p>代码源：<a href="https://github.com/AtsushiSakai/PythonRobotics" target="_blank" rel="noopener">https://github.com/AtsushiSakai/PythonRobotics</a></p>
+<p>simple_rrt.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Planning</span><span class="params">(self, animation=True)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Pathplanning</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    animation: flag for animation on or off</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    self.nodeList = [self.start]</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># Random Sampling</span></span><br><span class="line">        <span class="keyword">if</span> random.randint(<span class="number">0</span>, <span class="number">100</span>) &gt; self.goalSampleRate:</span><br><span class="line">            rnd = [random.uniform(self.minrand, self.maxrand), random.uniform(</span><br><span class="line">                self.minrand, self.maxrand)]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            rnd = [self.end.x, self.end.y]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Find nearest node</span></span><br><span class="line">        nind = self.GetNearestListIndex(self.nodeList, rnd)</span><br><span class="line">        <span class="comment"># print(nind)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># expand tree</span></span><br><span class="line">        nearestNode = self.nodeList[nind]</span><br><span class="line">        theta = math.atan2(rnd[<span class="number">1</span>] - nearestNode.y, rnd[<span class="number">0</span>] - nearestNode.x)</span><br><span class="line"></span><br><span class="line">        newNode = copy.deepcopy(nearestNode)</span><br><span class="line">        newNode.x += self.expandDis * math.cos(theta)</span><br><span class="line">        newNode.y += self.expandDis * math.sin(theta)</span><br><span class="line">        newNode.parent = nind</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__CollisionCheck(newNode, self.obstacleList):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        self.nodeList.append(newNode)</span><br><span class="line">        print(<span class="string">"nNodelist:"</span>, len(self.nodeList))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># check goal</span></span><br><span class="line">        dx = newNode.x - self.end.x</span><br><span class="line">        dy = newNode.y - self.end.y</span><br><span class="line">        d = math.sqrt(dx * dx + dy * dy)</span><br><span class="line">        <span class="keyword">if</span> d &lt;= self.expandDis:</span><br><span class="line">            print(<span class="string">"Goal!!"</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> animation:</span><br><span class="line">            self.DrawGraph(rnd)</span><br><span class="line"></span><br><span class="line">    path = [[self.end.x, self.end.y]]</span><br><span class="line">    lastIndex = len(self.nodeList) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> self.nodeList[lastIndex].parent <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        node = self.nodeList[lastIndex]</span><br><span class="line">        path.append([node.x, node.y])</span><br><span class="line">        lastIndex = node.parent</span><br><span class="line">    path.append([self.start.x, self.start.y])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> path</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -512,8 +513,8 @@ pip install git+https://github.com/osrf/rocker.git #(just an example)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/16/RoverPi小车_第三篇_系统安装和网络设置/" rel="next" title="RoverPi小车 第三篇：系统安装和网络设置">
-                <i class="fa fa-chevron-left"></i> RoverPi小车 第三篇：系统安装和网络设置
+              <a href="/2019/07/22/Summary-After-RoboND/" rel="next" title="机器人工程师纳米学位完结，迷思和追忆">
+                <i class="fa fa-chevron-left"></i> 机器人工程师纳米学位完结，迷思和追忆
               </a>
             
           </div>
@@ -521,10 +522,6 @@ pip install git+https://github.com/osrf/rocker.git #(just an example)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/22/Summary-After-RoboND/" rel="prev" title="机器人工程师纳米学位完结，迷思和追忆">
-                机器人工程师纳米学位完结，迷思和追忆 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -568,17 +565,8 @@ pip install git+https://github.com/osrf/rocker.git #(just an example)
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -666,23 +654,6 @@ pip install git+https://github.com/osrf/rocker.git #(just an example)
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#venv-—-Create-Virtual-Environments"><span class="nav-number">1.</span> <span class="nav-text">venv — Create Virtual Environments</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
