@@ -96,19 +96,17 @@
 
 
 
-  <meta name="description" content="从本篇文章开始，我将开始一个系列，介绍我如何搭建一个基于树莓派的自动驾驶小车，我把它叫做RoverPi．这第一篇叫做＂前世今生＂，之所以起这么文邹邹的题目，是因为确有其事．">
+  <meta name="description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RoverPi小车 第一篇：前世今生">
-<meta property="og:url" content="http://casperwin.me/2019/05/12/RoverPi小车_第一篇_前世今生/index.html">
+<meta property="og:title" content="代码赏析 | Rapidly-exploring Random Trees (RRTs)">
+<meta property="og:url" content="http://casperwin.me/2019/07/26/代码赏析_Random_Forest_Tree_Planning/index.html">
 <meta property="og:site_name" content="Casper的技术博客">
-<meta property="og:description" content="从本篇文章开始，我将开始一个系列，介绍我如何搭建一个基于树莓派的自动驾驶小车，我把它叫做RoverPi．这第一篇叫做＂前世今生＂，之所以起这么文邹邹的题目，是因为确有其事．">
+<meta property="og:description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://paper-attachments.dropbox.com/s_D06B0A48F9F7B21BB6EB7FC0C5CB18F4351C5400E5B74E225976699118CDB995_1557699404971_roverpi.JPG">
-<meta property="og:updated_time" content="2019-06-20T17:56:01.874Z">
+<meta property="og:updated_time" content="2019-08-01T00:16:21.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RoverPi小车 第一篇：前世今生">
-<meta name="twitter:description" content="从本篇文章开始，我将开始一个系列，介绍我如何搭建一个基于树莓派的自动驾驶小车，我把它叫做RoverPi．这第一篇叫做＂前世今生＂，之所以起这么文邹邹的题目，是因为确有其事．">
-<meta name="twitter:image" content="https://paper-attachments.dropbox.com/s_D06B0A48F9F7B21BB6EB7FC0C5CB18F4351C5400E5B74E225976699118CDB995_1557699404971_roverpi.JPG">
+<meta name="twitter:title" content="代码赏析 | Rapidly-exploring Random Trees (RRTs)">
+<meta name="twitter:description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
 
 
 
@@ -116,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="http://casperwin.me/2019/05/12/RoverPi小车_第一篇_前世今生/">
+  <link rel="canonical" href="http://casperwin.me/2019/07/26/代码赏析_Random_Forest_Tree_Planning/">
 
 
 
@@ -126,7 +124,7 @@
   };
 </script>
 
-  <title>RoverPi小车 第一篇：前世今生 | Casper的技术博客</title>
+  <title>代码赏析 | Rapidly-exploring Random Trees (RRTs) | Casper的技术博客</title>
   
 
 
@@ -387,7 +385,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/05/12/RoverPi小车_第一篇_前世今生/">
+    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/07/26/代码赏析_Random_Forest_Tree_Planning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Casper">
@@ -404,7 +402,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RoverPi小车 第一篇：前世今生
+          <h1 class="post-title" itemprop="name headline">代码赏析 | Rapidly-exploring Random Trees (RRTs)
 
               
             
@@ -430,7 +428,7 @@
                 
               
 
-              <time title="创建时间：2019-05-12 12:00:27" itemprop="dateCreated datePublished" datetime="2019-05-12T12:00:27-07:00">2019-05-12</time>
+              <time title="创建时间：2019-07-26 12:00:27" itemprop="dateCreated datePublished" datetime="2019-07-26T12:00:27-07:00">2019-07-26</time>
             
 
             
@@ -447,7 +445,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-20 10:56:01" itemprop="dateModified" datetime="2019-06-20T10:56:01-07:00">2019-06-20</time>
+                <time title="修改时间：2019-07-31 17:16:21" itemprop="dateModified" datetime="2019-07-31T17:16:21-07:00">2019-07-31</time>
               
             
           </span>
@@ -481,20 +479,22 @@
       
 
       
-        <p><img src="https://paper-attachments.dropbox.com/s_D06B0A48F9F7B21BB6EB7FC0C5CB18F4351C5400E5B74E225976699118CDB995_1557699404971_roverpi.JPG" alt="venv" style="height:300px;" align="middle"></p>
-<p>从本篇文章开始，我将开始一个系列，介绍我如何搭建一个基于树莓派的自动驾驶小车，我把它叫做RoverPi．这第一篇叫做＂前世今生＂，之所以起这么文邹邹的题目，是因为确有其事．</p>
+        <p>Rapidly-exploring Random Trees (RRTs)</p>
+<p>源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.</p>
 <a id="more"></a>
-<h2 id="前世"><a href="#前世" class="headerlink" title="前世"></a>前世</h2><p>大约是两年前，我还在美国东部读书的时候，看到Kickstarter上有这么一个众筹项目：CrazyPi小车．概念是一个模块化和低成本的机器人室内监控小车，可以基于一个2D Lidar进行SLAM（即时定位和建图），应用WIFI模块进行云操作，还加入了社交功能．现在还能看到该项目的链接：</p>
-<p><a href="https://www.kickstarter.com/projects/crazypi/crazypi-the-maker-board-designed-for-diy-robot-mak?ref=user_menu" target="_blank" rel="noopener">https://www.kickstarter.com/projects/crazypi/crazypi-the-maker-board-designed-for-diy-robot-mak?ref=user_menu</a></p>
-<p>宣传片做的很漂亮，只可惜烂尾了．将近两年，我们这些参与其众筹的群众还没有收到其承诺的全部组件．根本连基本的功能都无法完成．项目方好像是一家来自深圳的创业公司．看到网页上各种声讨的评论，作为同胞深感脸上无光．</p>
-<p>所以说，我十分同意我一个朋友最近和我聊到的创业观点．创业成功的最关键永远不在技术或者概念，而在于执行．</p>
-<p>这便是所谓＂前世＂．</p>
-<h2 id="今生"><a href="#今生" class="headerlink" title="今生"></a>今生</h2><p>在自己的Todo List里面一直躺着这一项，设计和搭建自己的机器人．今年以来大概是有了时间和自己折腾的心力，想要重生这个机器人小车．</p>
-<p>好在，这个机器人小车的大部分机械组件和传感器组件都已经到位．原本CrazyPi的主板是基于树莓排改的，现在基本上是跳票了，所以决定彻底抛弃原来的＂大脑＂，改用原生的树莓派（Raspberry Pi）和ROS Kinetic平台．</p>
-<p>经过改建以后，机器人小车的外观已经大为不同．我将其命名为新的名字：RoverPi．</p>
-<p>这是我第一个几乎是从硬件选配到软件平台搭建的项目，看起来不是很难，操作起来却也是一番波折．毕竟之前的机器人经验主要是在算法和仿真平台，不太会遭遇硬件上的挑战．</p>
-<p>在后面的文章里，我将分别介绍几个方面：</p>
-<p>RoverPi小车 第二篇:　硬件选型<br>RoverPi小车 第三篇:　系统安装和网络设置<br>RoverPi小车 第四篇:　F710游戏手柄遥控小车运动<br>RoverPi小车 第五篇:　Lidar调试和SLAM功能测试<br>RoverPi小车 第六篇:　Lidar导航功能测试</p>
+<p>From Wikipedia:</p>
+<p>A rapidly exploring random tree (RRT) is an algorithm designed to efficiently search nonconvex, high-dimensional spaces by randomly building a space-filling tree. The tree is constructed incrementally from samples drawn randomly from the search space and is inherently biased to grow towards large unsearched areas of the problem. RRTs were developed by Steven M. LaValle and James J. Kuffner Jr. They easily handle problems with obstacles and differential constraints (nonholonomic and kinodynamic) and have been widely used in autonomous robotic motion planning.</p>
+<p>RRTs can be viewed as a technique to generate open-loop trajectories for nonlinear systems with state constraints. An RRT can also be considered as a Monte-Carlo method to bias search into the largest Voronoi regions of a graph in a configuration space. Some variations can even be considered stochastic fractals.</p>
+<p>Why RRT ?</p>
+<ul>
+<li>High dimensional planning w/ complex dynamic model</li>
+<li>Smooth maneuvering</li>
+</ul>
+<p>For a general configuration space C, the algorithm in pseudocode is as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Algorithm BuildRRT</span><br><span class="line">  Input: Initial configuration qinit, number of vertices in RRT K, incremental distance Δq)</span><br><span class="line">  Output: RRT graph G</span><br><span class="line"></span><br><span class="line">  G.init(qinit)</span><br><span class="line">  for k = 1 to K</span><br><span class="line">    qrand ← RAND_CONF()</span><br><span class="line">    qnear ← NEAREST_VERTEX(qrand, G)</span><br><span class="line">    qnew ← NEW_CONF(qnear, qrand, Δq)</span><br><span class="line">    G.add_vertex(qnew)</span><br><span class="line">    G.add_edge(qnear, qnew)</span><br><span class="line">  return G</span><br></pre></td></tr></table></figure>
+<p>代码源：<a href="https://github.com/AtsushiSakai/PythonRobotics" target="_blank" rel="noopener">https://github.com/AtsushiSakai/PythonRobotics</a></p>
+<p>simple_rrt.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Planning</span><span class="params">(self, animation=True)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Pathplanning</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    animation: flag for animation on or off</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    self.nodeList = [self.start]</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># Random Sampling</span></span><br><span class="line">        <span class="keyword">if</span> random.randint(<span class="number">0</span>, <span class="number">100</span>) &gt; self.goalSampleRate:</span><br><span class="line">            rnd = [random.uniform(self.minrand, self.maxrand), random.uniform(</span><br><span class="line">                self.minrand, self.maxrand)]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            rnd = [self.end.x, self.end.y]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Find nearest node</span></span><br><span class="line">        nind = self.GetNearestListIndex(self.nodeList, rnd)</span><br><span class="line">        <span class="comment"># print(nind)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># expand tree</span></span><br><span class="line">        nearestNode = self.nodeList[nind]</span><br><span class="line">        theta = math.atan2(rnd[<span class="number">1</span>] - nearestNode.y, rnd[<span class="number">0</span>] - nearestNode.x)</span><br><span class="line"></span><br><span class="line">        newNode = copy.deepcopy(nearestNode)</span><br><span class="line">        newNode.x += self.expandDis * math.cos(theta)</span><br><span class="line">        newNode.y += self.expandDis * math.sin(theta)</span><br><span class="line">        newNode.parent = nind</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__CollisionCheck(newNode, self.obstacleList):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        self.nodeList.append(newNode)</span><br><span class="line">        print(<span class="string">"nNodelist:"</span>, len(self.nodeList))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># check goal</span></span><br><span class="line">        dx = newNode.x - self.end.x</span><br><span class="line">        dy = newNode.y - self.end.y</span><br><span class="line">        d = math.sqrt(dx * dx + dy * dy)</span><br><span class="line">        <span class="keyword">if</span> d &lt;= self.expandDis:</span><br><span class="line">            print(<span class="string">"Goal!!"</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> animation:</span><br><span class="line">            self.DrawGraph(rnd)</span><br><span class="line"></span><br><span class="line">    path = [[self.end.x, self.end.y]]</span><br><span class="line">    lastIndex = len(self.nodeList) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> self.nodeList[lastIndex].parent <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        node = self.nodeList[lastIndex]</span><br><span class="line">        path.append([node.x, node.y])</span><br><span class="line">        lastIndex = node.parent</span><br><span class="line">    path.append([self.start.x, self.start.y])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> path</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -525,8 +525,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/11/Particle-Filter-on-Pose-Tracking/" rel="next" title="粒子滤波器 - 姿态跟踪（Particle Filter -­ Pose Tracking）">
-                <i class="fa fa-chevron-left"></i> 粒子滤波器 - 姿态跟踪（Particle Filter -­ Pose Tracking）
+              <a href="/2019/07/22/Summary-After-RoboND/" rel="next" title="机器人工程师纳米学位完结，迷思和追忆">
+                <i class="fa fa-chevron-left"></i> 机器人工程师纳米学位完结，迷思和追忆
               </a>
             
           </div>
@@ -535,8 +535,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/14/RoverPi小车_第二篇_硬件选型/" rel="prev" title="RoverPi小车 第二篇：硬件选型和组装">
-                RoverPi小车 第二篇：硬件选型和组装 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/" rel="prev" title="代码赏析 | Stanley Path Tracking Controller">
+                代码赏析 | Stanley Path Tracking Controller <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -581,17 +581,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -679,23 +670,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前世"><span class="nav-number">1.</span> <span class="nav-text">前世</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今生"><span class="nav-number">2.</span> <span class="nav-text">今生</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

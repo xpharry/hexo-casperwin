@@ -96,17 +96,20 @@
 
 
 
-  <meta name="description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
+  <meta name="description" content="Stanley Path Tracking Controller参考论文： Stanley: The robot that won the DARPA grand challenge Autonomous Automobile Path Tracking  源代码：https://github.com/AtsushiSakai/PythonRobotics/blob/master/PathTrac">
 <meta property="og:type" content="article">
-<meta property="og:title" content="代码赏析|Rapidly-exploring Random Trees (RRTs)">
-<meta property="og:url" content="http://casperwin.me/2019/07/26/代码赏析|Random_Forest_Tree_Planning/index.html">
+<meta property="og:title" content="代码赏析 | Stanley Path Tracking Controller">
+<meta property="og:url" content="http://casperwin.me/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/index.html">
 <meta property="og:site_name" content="Casper的技术博客">
-<meta property="og:description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
+<meta property="og:description" content="Stanley Path Tracking Controller参考论文： Stanley: The robot that won the DARPA grand challenge Autonomous Automobile Path Tracking  源代码：https://github.com/AtsushiSakai/PythonRobotics/blob/master/PathTrac">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-26T21:32:20.937Z">
+<meta property="og:image" content="http://casperwin.me/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/stanley-geometry.png">
+<meta property="og:image" content="http://casperwin.me/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/stanley-equation.png">
+<meta property="og:updated_time" content="2019-08-01T17:07:28.921Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="代码赏析|Rapidly-exploring Random Trees (RRTs)">
-<meta name="twitter:description" content="Rapidly-exploring Random Trees (RRTs) 源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.">
+<meta name="twitter:title" content="代码赏析 | Stanley Path Tracking Controller">
+<meta name="twitter:description" content="Stanley Path Tracking Controller参考论文： Stanley: The robot that won the DARPA grand challenge Autonomous Automobile Path Tracking  源代码：https://github.com/AtsushiSakai/PythonRobotics/blob/master/PathTrac">
+<meta name="twitter:image" content="http://casperwin.me/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/stanley-geometry.png">
 
 
 
@@ -114,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="http://casperwin.me/2019/07/26/代码赏析|Random_Forest_Tree_Planning/">
+  <link rel="canonical" href="http://casperwin.me/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/">
 
 
 
@@ -124,7 +127,7 @@
   };
 </script>
 
-  <title>代码赏析|Rapidly-exploring Random Trees (RRTs) | Casper的技术博客</title>
+  <title>代码赏析 | Stanley Path Tracking Controller | Casper的技术博客</title>
   
 
 
@@ -241,24 +244,7 @@
 
     
 
-    <a href="/projects/" rel="section"><i class="menu-item-icon fa fa-fw fa-proj"></i> <br>projects</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/projects/" rel="section"><i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>项目</a>
 
   </li>
         
@@ -310,6 +296,23 @@
     
 
     <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -385,7 +388,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/07/26/代码赏析|Random_Forest_Tree_Planning/">
+    <link itemprop="mainEntityOfPage" href="http://casperwin.me/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Casper">
@@ -402,7 +405,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">代码赏析|Rapidly-exploring Random Trees (RRTs)
+          <h1 class="post-title" itemprop="name headline">代码赏析 | Stanley Path Tracking Controller
 
               
             
@@ -428,12 +431,24 @@
                 
               
 
-              <time title="创建时间：2019-07-26 12:00:27 / 修改时间：14:32:20" itemprop="dateCreated datePublished" datetime="2019-07-26T12:00:27-07:00">2019-07-26</time>
+              <time title="创建时间：2019-07-31 12:00:27" itemprop="dateCreated datePublished" datetime="2019-07-31T12:00:27-07:00">2019-07-31</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-08-01 10:07:28" itemprop="dateModified" datetime="2019-08-01T10:07:28-07:00">2019-08-01</time>
               
             
           </span>
@@ -467,22 +482,18 @@
       
 
       
-        <p>Rapidly-exploring Random Trees (RRTs)</p>
-<p>源论文：Steven M. LaVlle, Rapicly-Exploring Random Trees: A New Tool for Path Planning, 1998.</p>
-<a id="more"></a>
-<p>From Wikipedia:</p>
-<p>A rapidly exploring random tree (RRT) is an algorithm designed to efficiently search nonconvex, high-dimensional spaces by randomly building a space-filling tree. The tree is constructed incrementally from samples drawn randomly from the search space and is inherently biased to grow towards large unsearched areas of the problem. RRTs were developed by Steven M. LaValle and James J. Kuffner Jr. They easily handle problems with obstacles and differential constraints (nonholonomic and kinodynamic) and have been widely used in autonomous robotic motion planning.</p>
-<p>RRTs can be viewed as a technique to generate open-loop trajectories for nonlinear systems with state constraints. An RRT can also be considered as a Monte-Carlo method to bias search into the largest Voronoi regions of a graph in a configuration space. Some variations can even be considered stochastic fractals.</p>
-<p>Why RRT ?</p>
-<ul>
-<li>High dimensional planning w/ complex dynamic model</li>
-<li>Smooth maneuvering</li>
+        <h1 id="Stanley-Path-Tracking-Controller"><a href="#Stanley-Path-Tracking-Controller" class="headerlink" title="Stanley Path Tracking Controller"></a>Stanley Path Tracking Controller</h1><h2 id="参考论文："><a href="#参考论文：" class="headerlink" title="参考论文："></a>参考论文：</h2><ul>
+<li><a href="http://isl.ecst.csuchico.edu/DOCS/darpa2005/DARPA%202005%20Stanley.pdf" target="_blank" rel="noopener">Stanley: The robot that won the DARPA grand challenge</a></li>
+<li><a href="https://www.ri.cmu.edu/pub_files/2009/2/Automatic_Steering_Methods_for_Autonomous_Automobile_Path_Tracking.pdf" target="_blank" rel="noopener">Autonomous Automobile Path Tracking</a></li>
 </ul>
-<p>For a general configuration space C, the algorithm in pseudocode is as follows:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Algorithm BuildRRT</span><br><span class="line">  Input: Initial configuration qinit, number of vertices in RRT K, incremental distance Δq)</span><br><span class="line">  Output: RRT graph G</span><br><span class="line"></span><br><span class="line">  G.init(qinit)</span><br><span class="line">  for k = 1 to K</span><br><span class="line">    qrand ← RAND_CONF()</span><br><span class="line">    qnear ← NEAREST_VERTEX(qrand, G)</span><br><span class="line">    qnew ← NEW_CONF(qnear, qrand, Δq)</span><br><span class="line">    G.add_vertex(qnew)</span><br><span class="line">    G.add_edge(qnear, qnew)</span><br><span class="line">  return G</span><br></pre></td></tr></table></figure>
-<p>代码源：<a href="https://github.com/AtsushiSakai/PythonRobotics" target="_blank" rel="noopener">https://github.com/AtsushiSakai/PythonRobotics</a></p>
-<p>simple_rrt.py</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Planning</span><span class="params">(self, animation=True)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Pathplanning</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    animation: flag for animation on or off</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    self.nodeList = [self.start]</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># Random Sampling</span></span><br><span class="line">        <span class="keyword">if</span> random.randint(<span class="number">0</span>, <span class="number">100</span>) &gt; self.goalSampleRate:</span><br><span class="line">            rnd = [random.uniform(self.minrand, self.maxrand), random.uniform(</span><br><span class="line">                self.minrand, self.maxrand)]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            rnd = [self.end.x, self.end.y]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Find nearest node</span></span><br><span class="line">        nind = self.GetNearestListIndex(self.nodeList, rnd)</span><br><span class="line">        <span class="comment"># print(nind)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># expand tree</span></span><br><span class="line">        nearestNode = self.nodeList[nind]</span><br><span class="line">        theta = math.atan2(rnd[<span class="number">1</span>] - nearestNode.y, rnd[<span class="number">0</span>] - nearestNode.x)</span><br><span class="line"></span><br><span class="line">        newNode = copy.deepcopy(nearestNode)</span><br><span class="line">        newNode.x += self.expandDis * math.cos(theta)</span><br><span class="line">        newNode.y += self.expandDis * math.sin(theta)</span><br><span class="line">        newNode.parent = nind</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.__CollisionCheck(newNode, self.obstacleList):</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        self.nodeList.append(newNode)</span><br><span class="line">        print(<span class="string">"nNodelist:"</span>, len(self.nodeList))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># check goal</span></span><br><span class="line">        dx = newNode.x - self.end.x</span><br><span class="line">        dy = newNode.y - self.end.y</span><br><span class="line">        d = math.sqrt(dx * dx + dy * dy)</span><br><span class="line">        <span class="keyword">if</span> d &lt;= self.expandDis:</span><br><span class="line">            print(<span class="string">"Goal!!"</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> animation:</span><br><span class="line">            self.DrawGraph(rnd)</span><br><span class="line"></span><br><span class="line">    path = [[self.end.x, self.end.y]]</span><br><span class="line">    lastIndex = len(self.nodeList) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> self.nodeList[lastIndex].parent <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        node = self.nodeList[lastIndex]</span><br><span class="line">        path.append([node.x, node.y])</span><br><span class="line">        lastIndex = node.parent</span><br><span class="line">    path.append([self.start.x, self.start.y])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> path</span><br></pre></td></tr></table></figure>
+<h2 id="源代码："><a href="#源代码：" class="headerlink" title="源代码："></a>源代码：</h2><p><a href="https://github.com/AtsushiSakai/PythonRobotics/blob/master/PathTracking/stanley_controller/stanley_controller.py" target="_blank" rel="noopener">https://github.com/AtsushiSakai/PythonRobotics/blob/master/PathTracking/stanley_controller/stanley_controller.py</a></p>
+<a id="more"></a>
+<h3 id="节选代码1："><a href="#节选代码1：" class="headerlink" title="节选代码1："></a>节选代码1：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pid_control</span><span class="params">(target, current)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Proportional control for the speed.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param target: (float)</span></span><br><span class="line"><span class="string">    :param current: (float)</span></span><br><span class="line"><span class="string">    :return: (float)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">return</span> Kp * (target - current)</span><br></pre></td></tr></table></figure>
+<p>Stanley Controller对速度的控制是简单的PID控制，在这段代码中，其实也就是P控制，因为只有比例增益P。</p>
+<h3 id="节选代码2："><a href="#节选代码2：" class="headerlink" title="节选代码2："></a>节选代码2：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">stanley_control</span><span class="params">(state, cx, cy, cyaw, last_target_idx)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Stanley steering control.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    :param state: (State object)</span></span><br><span class="line"><span class="string">    :param cx: ([float])</span></span><br><span class="line"><span class="string">    :param cy: ([float])</span></span><br><span class="line"><span class="string">    :param cyaw: ([float])</span></span><br><span class="line"><span class="string">    :param last_target_idx: (int)</span></span><br><span class="line"><span class="string">    :return: (float, int)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    current_target_idx, error_front_axle = calc_target_index(state, cx, cy)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> last_target_idx &gt;= current_target_idx:</span><br><span class="line">        current_target_idx = last_target_idx</span><br><span class="line"></span><br><span class="line">    <span class="comment"># theta_e corrects the heading error</span></span><br><span class="line">    theta_e = normalize_angle(cyaw[current_target_idx] - state.yaw)</span><br><span class="line">    <span class="comment"># theta_d corrects the cross track error</span></span><br><span class="line">    theta_d = np.arctan2(k * error_front_axle, state.v)</span><br><span class="line">    <span class="comment"># Steering control</span></span><br><span class="line">    delta = theta_e + theta_d</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> delta, current_target_idx</span><br></pre></td></tr></table></figure>
+<p>控制器相对复杂的部分是对方向角的控制，公式的运用主要体现在’stanley_control()’这段代码中。</p>
+<img src="/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/stanley-geometry.png" title="Stanley Geometry">
+<img src="/2019/07/31/代码赏析_Stanley_Path_Tracking_Controller/stanley-equation.png" title="Stanley Equation">
 
       
     </div>
@@ -513,8 +524,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/22/Summary-After-RoboND/" rel="next" title="机器人工程师纳米学位完结，迷思和追忆">
-                <i class="fa fa-chevron-left"></i> 机器人工程师纳米学位完结，迷思和追忆
+              <a href="/2019/07/26/代码赏析_Random_Forest_Tree_Planning/" rel="next" title="代码赏析 | Rapidly-exploring Random Trees (RRTs)">
+                <i class="fa fa-chevron-left"></i> 代码赏析 | Rapidly-exploring Random Trees (RRTs)
               </a>
             
           </div>
@@ -565,8 +576,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -583,7 +603,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -654,6 +674,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stanley-Path-Tracking-Controller"><span class="nav-number">1.</span> <span class="nav-text">Stanley Path Tracking Controller</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考论文："><span class="nav-number">1.1.</span> <span class="nav-text">参考论文：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码："><span class="nav-number">1.2.</span> <span class="nav-text">源代码：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#节选代码1："><span class="nav-number">1.2.1.</span> <span class="nav-text">节选代码1：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#节选代码2："><span class="nav-number">1.2.2.</span> <span class="nav-text">节选代码2：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
